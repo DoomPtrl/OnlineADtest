@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Dementia Diagnosis Prediction</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .question {
+        margin-bottom: 20px;
+      }
+      .options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      .option {
+        display: flex;
+        align-items: center;
+      }
+      .option input[type="radio"] {
+        margin-right: 5px;
+      }
+      input[type="submit"] {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Answer the Questionnaire</h1>
+    {% if error %}
+      <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    <form method="post">
+      {% for feature_info in features_info %}
+        <div class="question">
+          <label><strong>{{ feature_info.question }}</strong></label><br>
+          <div class="options">
+            {% for option in feature_info.range %}
+              <div class="option">
+                <input type="radio" name="{{ feature_info.feature }}" value="{{ option }}" required>
+                <label>{{ option }}</label>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+      <input type="submit" value="Predict">
+    </form>
+  </body>
+</html>
