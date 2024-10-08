@@ -2,10 +2,13 @@
 <html>
   <head>
     <title>Prediction Result</title>
+    <link rel="stylesheet" href="/static/questionnaire_styles.css">
   </head>
   <body>
-    <h1>Prediction Result</h1>
-    <p>The predicted diagnosis is: <strong>{{ prediction }}</strong></p>
-    <a href="/">Start Over</a>
+    <div class="card">
+      <h1>Prediction Result</h1>
+      <p>The predicted diagnosis is: <strong>{{ prediction }}</strong></p>
+      <a href="/" class="button">Start Over</a>
+    </div>
   </body>
 </html>

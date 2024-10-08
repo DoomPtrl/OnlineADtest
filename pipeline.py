@@ -56,7 +56,6 @@ def load_and_preprocess(data_paths, criterias, diagnosis_path, balance=False):
 #     return accuracy_score(y_test, y_pred)
 
 if __name__=='__main__':
-# Define the questionnaires
     import pandas as pd
     import itertools
     import joblib
