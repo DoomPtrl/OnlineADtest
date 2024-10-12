@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from bayesian import *
+from modeling.bayesian import *
 from sklearn.metrics import accuracy_score
 
 CRITERIA_MMSE = ['MMDATE', 'MMYEAR', 'MMMONTH', 'MMDAY',
@@ -97,5 +97,5 @@ if __name__=='__main__':
             print(classification_report(y_test, y_pred))
 
             # Save the model
-            model_filename = 'saved_models/'+'lr_' + '_'.join(combo_names) + '.pkl'
+            model_filename = '../saved_models/'+'lr_' + '_'.join(combo_names) + '.pkl'
             joblib.dump((clf, X.columns.tolist()), model_filename)
