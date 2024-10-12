@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Questionnaires</title>
+    <!-- Include your CSS styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- Include Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body>
+    <h1>Select Questionnaires</h1>
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    <div class="questionnaire-selection">
+        {% for key, questionnaire in questionnaires.items() %}
+            <div class="questionnaire-card">
+                <span class="questionnaire-name">{{ questionnaire.name }}</span>
+                <a href="{{ url_for('questionnaire_route', questionnaire=key) }}">
+                    <img src="{{ url_for('static', filename='images/' + key + '.png') }}" alt="{{ questionnaire.name }} Logo">
+                </a>
+                <div class="status-container">
+                    {% if key in completed_questionnaires %}
+                        <span class="checkbox complete">&#9745;</span> <!-- Checked box -->
+                        <span class="status-text complete">Complete</span>
+                    {% else %}
+                        <span class="checkbox incomplete">&#9744;</span> <!-- Unchecked box -->
+                        <span class="status-text incomplete">Incomplete</span>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="button-container">
+        <a href="{{ url_for('predict') }}" class="button">Predict</a>
+        <a href="{{ url_for('reset') }}" class="button reset-button">Reset</a>
+    </div>
+</body>
+</html>

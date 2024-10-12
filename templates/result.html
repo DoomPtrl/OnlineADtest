@@ -1,14 +1,92 @@
-<!doctype html>
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <title>Prediction Result</title>
-    <link rel="stylesheet" href="/static/questionnaire_styles.css">
-  </head>
-  <body>
+    <!-- Include Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Link to External CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Inline CSS for demonstration; consider moving to external stylesheet */
+        body {
+            font-family: 'Open Sans', Arial, sans-serif;
+            margin: 0;
+            background-color: #f5f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+        .card h1 {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .card p {
+            font-size: 1.2em;
+            color: #34495e;
+            margin-bottom: 30px;
+        }
+        .card p strong {
+            color: #e74c3c;
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #3498db;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            .card {
+                padding: 30px 20px;
+            }
+            .card h1 {
+                font-size: 1.8em;
+            }
+            .card p {
+                font-size: 1em;
+            }
+            .button {
+                width: 100%;
+                padding: 15px 0;
+            }
+        }
+    </style>
+</head>
+<body>
     <div class="card">
-      <h1>Prediction Result</h1>
-      <p>The predicted diagnosis is: <strong>{{ prediction }}</strong></p>
-      <a href="/" class="button">Start Over</a>
+        <h1>Prediction Result</h1>
+        <p>The predicted diagnosis is: <strong>{{ prediction }}</strong></p>
+        <a href="/" class="button">Start Over</a>
     </div>
-  </body>
+</body>
 </html>

@@ -9,7 +9,9 @@ CRITERIA_MMSE = ['MMDATE', 'MMYEAR', 'MMMONTH', 'MMDAY',
        'MMO', 'MMW', 'WORD1DL', 'WORD2DL', 'WORD3DL',
        'MMWATCH', 'MMPENCIL', 'MMREPEAT', 'MMHAND', 'MMFOLD', 'MMONFLR',
        'MMREAD', 'MMWRITE', 'MMDRAW']
-CRITERIA_NPIQ = ['NPI'+chr(i)+'SEV' for i in range(65, 65+12)]
+CRITERIA_NPIQ = ['NPIASEV', 'NPIBSEV', 'NPICSEV', 'NPIDSEV', 'NPIESEV',
+            'NPIFSEV', 'NPIGSEV', 'NPIHSEV', 'NPIISEV', 'NPIJSEV',
+            'NPIKSEV', 'NPILSEV']
 CRITERIA_MOCA = ["TRAILS","CUBE",
             "CLOCKCON","CLOCKNO","CLOCKHAN",
             "LION","RHINO","CAMEL",
@@ -61,11 +63,12 @@ if __name__=='__main__':
     import joblib
     from sklearn.model_selection import train_test_split
     from sklearn.ensemble import RandomForestClassifier
+    from sklearn.linear_model import LogisticRegression
     from sklearn.metrics import classification_report
     questionnaires = [
-        ('mmse', 'data/mmse.csv', CRITERIA_MMSE),
-        ('moca', 'data/moca.csv', CRITERIA_MOCA),
-        ('npiq', 'data/npiq.csv', CRITERIA_NPIQ),
+        ('mmse', 'cleaned_data/mmse_clean.csv', CRITERIA_MMSE),
+        ('moca', 'cleaned_data/moca_clean.csv', CRITERIA_MOCA),
+        ('npiq', 'cleaned_data/npiq_clean.csv', CRITERIA_NPIQ),
     ]
 
     diagnosis_path = 'data/diagnosis.csv'
@@ -78,12 +81,13 @@ if __name__=='__main__':
             criterias = [q[2] for q in combo]
 
             # Load and preprocess data
-            X, y = load_and_preprocess(data_paths, criterias, diagnosis_path, balance=True)
+            X, y = load_and_preprocess(data_paths, criterias, diagnosis_path, balance=False)
             # Split data
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
             # Train the model
-            clf = RandomForestClassifier(n_estimators=100)
+            # clf = RandomForestClassifier(n_estimators=100)
+            clf=LogisticRegression()
             clf.fit(X_train, y_train)
 
             # Evaluate the model
@@ -93,5 +97,5 @@ if __name__=='__main__':
             print(classification_report(y_test, y_pred))
 
             # Save the model
-            model_filename = 'saved_models/'+'rf_' + '_'.join(combo_names) + '.pkl'
+            model_filename = 'saved_models/'+'lr_' + '_'.join(combo_names) + '.pkl'
             joblib.dump((clf, X.columns.tolist()), model_filename)
