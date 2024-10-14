@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from modeling.bayesian import *
+# from modeling.bayesian import *
 from sklearn.metrics import accuracy_score
 
 CRITERIA_MMSE = ['MMDATE', 'MMYEAR', 'MMMONTH', 'MMDAY',
@@ -66,12 +66,12 @@ if __name__=='__main__':
     from sklearn.linear_model import LogisticRegression
     from sklearn.metrics import classification_report
     questionnaires = [
-        ('mmse', 'cleaned_data/mmse_clean.csv', CRITERIA_MMSE),
-        ('moca', 'cleaned_data/moca_clean.csv', CRITERIA_MOCA),
-        ('npiq', 'cleaned_data/npiq_clean.csv', CRITERIA_NPIQ),
+        ('mmse', 'modeling/cleaned_data/mmse_clean.csv', CRITERIA_MMSE),
+        ('moca', 'modeling/cleaned_data/moca_clean.csv', CRITERIA_MOCA),
+        ('npiq', 'modeling/cleaned_data/npiq_clean.csv', CRITERIA_NPIQ),
     ]
 
-    diagnosis_path = 'data/diagnosis.csv'
+    diagnosis_path = 'modeling/data/diagnosis.csv'
 
     # Iterate over all combinations
     for n in range(1, len(questionnaires) + 1):
@@ -86,8 +86,8 @@ if __name__=='__main__':
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
             # Train the model
-            # clf = RandomForestClassifier(n_estimators=100)
-            clf=LogisticRegression()
+            clf = RandomForestClassifier()
+            # clf=LogisticRegression()
             clf.fit(X_train, y_train)
 
             # Evaluate the model
@@ -97,5 +97,5 @@ if __name__=='__main__':
             print(classification_report(y_test, y_pred))
 
             # Save the model
-            model_filename = '../saved_models/'+'lr_' + '_'.join(combo_names) + '.pkl'
+            model_filename = 'saved_models/'+'rf_' + '_'.join(combo_names) + '.pkl'
             joblib.dump((clf, X.columns.tolist()), model_filename)
