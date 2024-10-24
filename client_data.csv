@@ -1,0 +1,4 @@
+id,name,sex,age,address,diagnosis,photo
+1,John Doe,Male,45,123 Main St,Normal,client_1_default.jpg
+3,Yeongyu Kim,Male,11,16419,Normal,11
+4,Yeongyu Kim,Male,111,16419,Unknown,11
