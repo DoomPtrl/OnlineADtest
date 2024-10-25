@@ -34,7 +34,7 @@ for q in questionnaires:
 
 # Helper function to load the correct model
 def load_model(selected_questionnaires):
-    model_filename = 'saved_models/' + 'lr_' + '_'.join(sorted(selected_questionnaires)) + '.pkl'
+    model_filename = 'saved_models/' + 'rf_' + '_'.join(sorted(selected_questionnaires)) + '.pkl'
     if os.path.exists(model_filename):
         model, feature_names = joblib.load(model_filename)
         return model, feature_names
@@ -219,6 +219,14 @@ def predict():
     prediction = model.predict(features_df)
     predicted_diagnosis = diagnosis_map.get(prediction[0], 'Unknown')
 
+    # Get prediction probabilities
+    probabilities = model.predict_proba(features_df)[0]
+    # Map probabilities to diagnosis labels
+    prob_dict = {}
+    for idx, prob in enumerate(probabilities):
+        diagnosis_label = diagnosis_map.get(idx, 'Unknown')
+        prob_dict[diagnosis_label] = round(prob * 100, 2)  # Convert to percentage and round off
+
     # Save the prediction to client_data.csv
     client_id = session.get('client_id')  # Ensure client_id is retrieved from the session
     if client_id is not None:
@@ -229,7 +237,8 @@ def predict():
     # Clear the session data if you want to reset after prediction
     # session.clear()
 
-    return render_template('result.html', prediction=predicted_diagnosis)
+    return render_template('result.html', prediction=predicted_diagnosis, probabilities=prob_dict)
+
 
 @app.route('/reset')
 def reset():

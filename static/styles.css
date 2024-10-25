@@ -198,3 +198,160 @@ img {
         margin-top: 10px;
     }
 }
+
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f9fc;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+/* Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+    }
+}
+
+/* Left Panel */
+.left-panel {
+    background-color: #fff;
+    padding: 20px;
+    border-right: 1px solid #e0e0e0;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.client-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.client-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.client-list li:hover {
+    background-color: #f1f1f1;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: #dc3545;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.delete-btn:hover {
+    color: #c82333;
+}
+
+.add-client-btn {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.add-client-btn:hover {
+    background-color: #218838;
+}
+
+/* Right Panel */
+.right-panel {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 2;
+}
+
+.client-details img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.client-details p {
+    margin: 5px 0;
+}
+
+.client-details strong {
+    color: #333;
+}
+
+.take-questionnaire-btn,
+.edit-client-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.take-questionnaire-btn {
+    background-color: #007bff;
+}
+
+.take-questionnaire-btn:hover {
+    background-color: #0056b3;
+}
+
+.edit-client-btn {
+    background-color: #ffc107;
+}
+
+.edit-client-btn:hover {
+    background-color: #e0a800;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #555;
+}
+
+form input[type="text"],
+form input[type="number"],
+form select,
+form input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    margin-top: 15px;
+    width: 100%;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+    .left-panel {
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+}

@@ -334,10 +334,10 @@
 <!-- Questions 27-31 -->
 {% for num, word in [(27, 'face'), (28, 'velvet'), (29, 'church'), (30, 'daisy'), (31, 'red')] %}
 <div class="question">
-    <p>{{ num }}. Delayed recall of '{{ word }}' (0 = Incorrect, 1 = Correct with two cues, 2 = Correct with one cue, 3 = Correct with no cues)</p>
+    <p>{{ num }}. Delayed recall of '{{ word }}' (0 = Incorrect, 1 = Correct with Multiple Choice Cue, 2 = Correct with Category Cue, 3 = Correct with no cues)</p>
     <label><input type="radio" name="DELW{{ num - 26 }}" value="0" {% if previous_answers.get('DELW' + (num - 26)|string, '0') == '0' %}checked{% endif %}> Incorrect</label>
-    <label><input type="radio" name="DELW{{ num - 26 }}" value="1" {% if previous_answers.get('DELW' + (num - 26)|string, '0') == '1' %}checked{% endif %}> Correct with two cues</label>
-    <label><input type="radio" name="DELW{{ num - 26 }}" value="2" {% if previous_answers.get('DELW' + (num - 26)|string, '0') == '2' %}checked{% endif %}> Correct with one cue</label>
+    <label><input type="radio" name="DELW{{ num - 26 }}" value="1" {% if previous_answers.get('DELW' + (num - 26)|string, '0') == '1' %}checked{% endif %}> Correct with Multiple Choice Cue</label>
+    <label><input type="radio" name="DELW{{ num - 26 }}" value="2" {% if previous_answers.get('DELW' + (num - 26)|string, '0') == '2' %}checked{% endif %}> Correct with Category Cue</label>
     <label><input type="radio" name="DELW{{ num - 26 }}" value="3" {% if previous_answers.get('DELW' + (num - 26)|string, '0') == '3' %}checked{% endif %}> Correct with no cues</label>
 </div>
 {% endfor %}
