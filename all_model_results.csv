@@ -1,8 +1,0 @@
-Combination,Model,CV_Score,Test_Accuracy,Test_ROC_AUC,Best_Params
-mmse,RandomForest,0.6537219248601813,0.6694873071179691,0.8310495867845472,"{'max_depth': 10, 'min_samples_split': 2, 'n_estimators': 300}"
-moca,RandomForest,0.7283024065379544,0.7431693989071039,0.8809840397508003,"{'max_depth': None, 'min_samples_split': 5, 'n_estimators': 300}"
-npiq,RandomForest,0.5796682371539259,0.5796483750665956,0.7328254633122683,"{'max_depth': 10, 'min_samples_split': 2, 'n_estimators': 100}"
-mmse_moca,RandomForest,0.7243680117696512,0.739344262295082,0.8792983870394595,"{'max_depth': None, 'min_samples_split': 5, 'n_estimators': 300}"
-moca_npiq,RandomForest,0.7521594684385382,0.7608503100088574,0.9003812388986284,"{'max_depth': None, 'min_samples_split': 5, 'n_estimators': 300}"
-mmse_npiq,RandomForest,0.7111366458756141,0.7115158636897767,0.8663121740247505,"{'max_depth': None, 'min_samples_split': 10, 'n_estimators': 300}"
-mmse_moca_npiq,RandomForest,0.7648405434692007,0.7894736842105263,0.9153400024170656,"{'max_depth': None, 'min_samples_split': 5, 'n_estimators': 200}"
