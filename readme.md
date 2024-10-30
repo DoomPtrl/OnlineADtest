@@ -7,7 +7,9 @@ This is a webapp that
 1. predits diagnosis(AD/MCI/CN) based on the questionnaire answers.
 2. manages patient's information and questionnaire answers.
 This is the graduation project of Yeongyu Kim.
-=========
+# Why this project?
+Refer to my report!
+https://1drv.ms/t/s!Ao2cfP9fepJck6l_VS48DmnCvps3rg?e=M0kpos
 # Details
 ## Data Collection
 - Three questionnaire data are used:
@@ -37,3 +39,6 @@ This is the graduation project of Yeongyu Kim.
 - [ ] Implementing more questionnaire data
 - [ ] Implementing more AI models
 - [ ] Improving the webapp design
+# Demo
+https://www.youtube.com/watch?v=603yG2koSlI
+
