@@ -1,116 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Prediction Result</title>
-    <!-- Include Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <!-- Link to External CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <style>
-        /* Inline CSS for demonstration; consider moving to external stylesheet */
-        body {
-            font-family: 'Open Sans', Arial, sans-serif;
-            margin: 0;
-            background-color: #f5f7fa;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .card {
-            background-color: #fff;
-            border-radius: 15px;
-            padding: 40px;
-            max-width: 500px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1s ease-in-out;
-        }
-        .card h1 {
-            font-size: 2em;
-            color: #2c3e50;
-            margin-bottom: 20px;
-        }
-        .card p {
-            font-size: 1.2em;
-            color: #34495e;
-            margin-bottom: 20px;
-        }
-        .card p strong {
-            color: #e74c3c;
-        }
-        .probabilities {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 30px 0;
-        }
-        .probabilities li {
-            font-size: 1.1em;
-            color: #34495e;
-            margin: 5px 0;
-        }
-        .probabilities li strong {
-            color: #2c3e50;
-        }
-        .button {
-            display: inline-block;
-            padding: 15px 30px;
-            font-size: 1em;
-            color: #fff;
-            background-color: #3498db;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-            margin: 5px;
-        }
-        .button:hover {
-            background-color: #2980b9;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        /* Responsive Styles */
-        @media (max-width: 600px) {
-            .card {
-                padding: 30px 20px;
-            }
-            .card h1 {
-                font-size: 1.8em;
-            }
-            .card p {
-                font-size: 1em;
-            }
-            .probabilities li {
-                font-size: 1em;
-            }
-            .button {
-                width: 100%;
-                padding: 15px 0;
-                margin: 10px 0;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="card">
-        <h1>Prediction Result</h1>
-        <p>The predicted diagnosis is: <strong>{{ prediction }}</strong></p>
-        <p>Probabilities:</p>
-        <ul class="probabilities">
-            {% for diagnosis, probability in probabilities.items() %}
-            <li><strong>{{ diagnosis }}:</strong> {{ probability }}%</li>
-            {% endfor %}
-        </ul>
-        <a href="/" class="button">Back to Client Info</a>
+{% extends "base.html" %}
+
+{% block title %}Prediction Result{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="card mx-auto" style="max-width: 600px;">
+        <div class="card-body text-center">
+            <h1 class="card-title mb-4">Prediction Result</h1>
+            <p class="card-text">The predicted diagnosis is: <strong>{{ prediction }}</strong></p>
+            <h5 class="mt-4">Probabilities:</h5>
+            <ul class="list-group list-group-flush mb-4">
+                {% for diagnosis, probability in probabilities.items() %}
+                <li class="list-group-item"><strong>{{ diagnosis }}:</strong> {{ probability }}%</li>
+                {% endfor %}
+            </ul>
+            <a href="/" class="btn btn-primary btn-lg">Back to Patient Info</a>
+        </div>
     </div>
-</body>
-</html>
+</div>
+{% endblock %}

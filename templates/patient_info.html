@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+
+{% block title %}Patient Information{% endblock %}
+
+{% block content %}
+<header class="bg-primary text-white text-center py-4 mb-4">
+    <h1 class="display-4" style="font-family: 'Lobster', cursive;">Alzheimer's Disease Diagnostic Questionnaires</h1>
+</header>
+
+<div class="container">
+    <div class="row">
+        <!-- Left Panel: Patient List -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0">Patient List</h5>
+                </div>
+                <ul class="list-group list-group-flush" id="patient-list">
+                    {% for patient in patients %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                        <div class="w-100" onclick="showpatientDetails({{ patient.id }})" style="cursor: pointer;">
+                            {{ patient.name }} ({{ patient.sex }}, {{ patient.age }})
+                        </div>
+                        <button class="btn btn-danger btn-sm" onclick="event.stopPropagation(); deletepatient({{ patient.id }})" aria-label="Delete patient">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </li>
+                    {% endfor %}
+                    <li class="list-group-item list-group-item-action text-center" onclick="addNewpatient()" style="cursor: pointer;">
+                        <i class="fas fa-plus"></i> Add New Patient
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Right Panel: Patient Details -->
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0">Patient Details</h5>
+                </div>
+                <div class="card-body" id="patient-details">
+                    <p class="text-muted">Select a patient from the list to see more information or add a new patient.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const patients = {{ patients | tojson }};
+
+    function showpatientDetails(patientId) {
+        const patient = patients.find(c => c.id == patientId);
+        if (patient) {
+            const detailsDiv = document.getElementById("patient-details");
+            detailsDiv.innerHTML = `
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-4 text-center">
+                            <img src="/static/uploads/${patient.photo}" alt="${patient.name}" class="img-fluid rounded-start p-3">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">${patient.name}</h5>
+                                <p class="card-text"><strong>Patient ID:</strong> ${patient.id}</p>
+                                <p class="card-text"><strong>Sex:</strong> ${patient.sex}</p>
+                                <p class="card-text"><strong>Age:</strong> ${patient.age}</p>
+                                <p class="card-text"><strong>Address:</strong> ${patient.address}</p>
+                                <p class="card-text"><strong>Previous Diagnosis:</strong> ${patient.diagnosis}</p>
+                                <p class="card-text"><strong>Diagnosis Probabilities:</strong></p>
+                                <ul class="list-group list-group-flush mb-3">
+                                    <li class="list-group-item">Normal: ${patient.prob_Normal || 'N/A'}%</li>
+                                    <li class="list-group-item">Mild Cognitive Impairment: ${patient.prob_MCI || 'N/A'}%</li>
+                                    <li class="list-group-item">Alzheimer's Disease: ${patient.prob_AD || 'N/A'}%</li>
+                                </ul>
+                                <button class="btn btn-primary me-2" onclick="takeQuestionnaire(${patient.id})">Take Questionnaire</button>
+                                <button class="btn btn-warning" onclick="editpatient(${patient.id})">Edit Info</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+    }
+
+    function takeQuestionnaire(patientId) {
+        window.location.href = `/select/${patientId}`;
+    }
+
+    function editpatient(patientId) {
+        const patient = patients.find(c => c.id == patientId);
+        if (patient) {
+            const detailsDiv = document.getElementById("patient-details");
+            detailsDiv.innerHTML = `
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h3 class="card-title">Edit Patient Information</h3>
+                        <form id="edit-patient-form" action="/edit_patient/${patientId}" method="POST" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name:</label>
+                                <input type="text" class="form-control" id="name" name="name" value="${patient.name}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="sex" class="form-label">Sex:</label>
+                                <select class="form-select" id="sex" name="sex" required>
+                                    <option value="Male" ${patient.sex === 'Male' ? 'selected' : ''}>Male</option>
+                                    <option value="Female" ${patient.sex === 'Female' ? 'selected' : ''}>Female</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="age" class="form-label">Age:</label>
+                                <input type="number" class="form-control" id="age" name="age" value="${patient.age}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Address:</label>
+                                <input type="text" class="form-control" id="address" name="address" value="${patient.address}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="photo" class="form-label">Photo:</label>
+                                <input type="file" class="form-control" id="photo" name="photo" accept="image/*">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            `;
+        }
+    }
+
+    function addNewpatient() {
+        const detailsDiv = document.getElementById("patient-details");
+        detailsDiv.innerHTML = `
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h3 class="card-title">Add New Patient</h3>
+                    <form id="add-patient-form" action="/add_patient" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="sex" class="form-label">Sex:</label>
+                            <select class="form-select" id="sex" name="sex" required>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="age" class="form-label">Age:</label>
+                            <input type="number" class="form-control" id="age" name="age" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address:</label>
+                            <input type="text" class="form-control" id="address" name="address" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="photo" class="form-label">Photo:</label>
+                            <input type="file" class="form-control" id="photo" name="photo" accept="image/*">
+                        </div>
+                        <button type="submit" class="btn btn-success">Save Patient</button>
+                    </form>
+                </div>
+            </div>
+        `;
+    }
+
+    function deletepatient(patientId) {
+        if (confirm("Are you sure you want to delete this patient?")) {
+            fetch(`/delete_patient/${patientId}`, {
+                method: 'POST'
+            }).then(() => {
+                window.location.reload();
+            });
+        }
+    }
+</script>
+{% endblock %}

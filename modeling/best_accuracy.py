@@ -1,13 +1,18 @@
 import pandas as pd
 import numpy as np
-from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, AdaBoostClassifier, ExtraTreesClassifier
+from sklearn.ensemble import (
+    RandomForestClassifier,
+    GradientBoostingClassifier,
+    AdaBoostClassifier,
+    ExtraTreesClassifier
+)
 from sklearn.svm import SVC
-from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score
-from sklearn.preprocessing import StandardScaler
-from sklearn.pipeline import Pipeline
-from sklearn.metrics import accuracy_score
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.metrics import accuracy_score, roc_auc_score, classification_report
+from sklearn.preprocessing import LabelBinarizer
 
-# Function for loading and preprocessing data (using the load_and_preprocess function from pipeline.py)
+# Function for loading and preprocessing data
 def load_combination_data(combo_name):
     diagnosis_path = 'modeling/data/diagnosis.csv'  # Replace with the actual path to the diagnosis data
     
@@ -15,7 +20,6 @@ def load_combination_data(combo_name):
         'mmse': 'modeling/cleaned_data/mmse_clean.csv',  # Replace with actual paths to MMSE, MOCA, and NPI-Q data
         'moca': 'modeling/cleaned_data/moca_clean.csv',
         'npiq': 'modeling/cleaned_data/npiq_clean.csv'
-
     }
     
     criterias = {
@@ -57,29 +61,61 @@ def load_combination_data(combo_name):
     # Merging diagnosis data with each of the questionnaire data based on the nearest visit date within a 1-year tolerance
     for data in datas:
         data['VISDATE'] = pd.to_datetime(data['VISDATE'])
-        diagnosis = pd.merge_asof(diagnosis.sort_values(['VISDATE', 'PTID']), data.sort_values(['VISDATE', 'PTID']), on='VISDATE', by='PTID', direction='nearest', tolerance=pd.Timedelta('365D')).dropna()
+        diagnosis = pd.merge_asof(
+            diagnosis.sort_values(['VISDATE', 'PTID']),
+            data.sort_values(['VISDATE', 'PTID']),
+            on='VISDATE',
+            by='PTID',
+            direction='nearest',
+            tolerance=pd.Timedelta('450D')
+        ).dropna()
     
     # Prepare features and labels
     X = diagnosis[[item for sublist in criterias_combo for item in sublist]]
     y = diagnosis['DIAGNOSIS']
     return X, y
 
-# Define the model pipelines
+# Define the models
 models = {
-    'RandomForest': RandomForestClassifier(),
-    'GradientBoosting': GradientBoostingClassifier(),
-    'AdaBoost': AdaBoostClassifier(),
-    'ExtraTrees': ExtraTreesClassifier(),
-    'SVM': SVC(),
+    'RandomForest': RandomForestClassifier(random_state=42),
+    'GradientBoosting': GradientBoostingClassifier(random_state=42),
+    'AdaBoost': AdaBoostClassifier(random_state=42, algorithm='SAMME'),
+    'ExtraTrees': ExtraTreesClassifier(random_state=42),
+    'SVM': SVC(probability=True, random_state=42),
+    'LogisticRegression': LogisticRegression(max_iter=1000, random_state=42)  # Added Logistic Regression
 }
 
 # Define hyperparameters for GridSearch
 param_grids = {
-    'RandomForest': {'classifier__n_estimators': [50, 100, 150], 'classifier__max_depth': [None, 10, 20]},
-    'GradientBoosting': {'classifier__n_estimators': [50, 100], 'classifier__learning_rate': [0.01, 0.1, 0.2]},
-    'AdaBoost': {'classifier__n_estimators': [50, 100], 'classifier__learning_rate': [0.01, 0.1, 1]},
-    'ExtraTrees': {'classifier__n_estimators': [50, 100, 150], 'classifier__max_depth': [None, 10, 20]},
-    'SVM': {'classifier__C': [0.1, 1, 10], 'classifier__kernel': ['rbf', 'linear']},
+    'RandomForest': {
+        'n_estimators': [100, 200, 300],
+        'max_depth': [None, 10, 20],
+        'min_samples_split': [2, 5, 10]
+    },
+    'GradientBoosting': {
+        'n_estimators': [100, 200],
+        'learning_rate': [0.01, 0.1, 0.2],
+        'max_depth': [3, 5, 7]
+    },
+    'AdaBoost': {
+        'n_estimators': [50, 100, 200],
+        'learning_rate': [0.01, 0.1, 1]
+    },
+    'ExtraTrees': {
+        'n_estimators': [100, 200, 300],
+        'max_depth': [None, 10, 20],
+        'min_samples_split': [2, 5, 10]
+    },
+    'SVM': {
+        'C': [0.1, 1, 10],
+        'kernel': ['rbf', 'linear'],
+        'gamma': ['scale', 'auto']
+    },
+    'LogisticRegression': {  # Hyperparameters for Logistic Regression
+        'C': [0.01, 0.1, 1, 10, 100],
+        'penalty': ['l2'],
+        'solver': ['lbfgs', 'saga']
+    }
 }
 
 # Iterate over each combination of data
@@ -88,39 +124,80 @@ combinations = ['mmse', 'moca', 'npiq', 'mmse_moca', 'moca_npiq', 'mmse_npiq', '
 all_model_results = []
 
 for combo in combinations:
-    print(f"Evaluating combination: {combo}")
+    print(f"\nEvaluating combination: {combo}")
     
     # Load data
     X, y = load_combination_data(combo)
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    
+    # Split the data
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42, stratify=y
+    )
     
     for model_name, model in models.items():
         print(f"  Evaluating model: {model_name}")
         
-        # Define pipeline (scaling only needed for SVM)
-        if model_name == 'SVM':
-            pipeline = Pipeline([('scaler', StandardScaler()), ('classifier', model)])
-        else:
-            pipeline = Pipeline([('classifier', model)])
-        
-        # GridSearch for best hyperparameters
-        grid = GridSearchCV(pipeline, param_grids[model_name], cv=5, n_jobs=-1, scoring='accuracy')
+        # Define GridSearchCV
+        grid = GridSearchCV(
+            estimator=model,
+            param_grid=param_grids[model_name],
+            cv=5,
+            n_jobs=-1,
+            scoring='accuracy',
+            verbose=1
+        )
         grid.fit(X_train, y_train)
         
         # Cross-validation score
         cv_score = grid.best_score_
-        print(f"    CV Score: {cv_score:.4f}")
+        print(f"    Best CV Score: {cv_score:.4f}")
         
         # Evaluate on test set
         y_pred = grid.best_estimator_.predict(X_test)
+        
+        # Determine if it's binary or multi-class classification
+        unique_classes = np.unique(y)
+        num_classes = len(unique_classes)
+        
+        if num_classes == 2:
+            # Binary classification
+            y_prob = grid.best_estimator_.predict_proba(X_test)[:, 1]
+            test_auc = roc_auc_score(y_test, y_prob)
+        else:
+            # Multi-class classification
+            y_prob = grid.best_estimator_.predict_proba(X_test)
+            # Binarize the output for multi-class ROC AUC
+            lb = LabelBinarizer()
+            lb.fit(y_test)
+            y_test_binarized = lb.transform(y_test)
+            if y_test_binarized.shape[1] == 1:
+                y_test_binarized = np.hstack([1 - y_test_binarized, y_test_binarized])
+            test_auc = roc_auc_score(y_test_binarized, y_prob, multi_class='ovr')
+        
+        # Compute test accuracy
         test_accuracy = accuracy_score(y_test, y_pred)
+        
+        # Compute classification report
+        class_report = classification_report(y_test, y_pred, zero_division=0)
+        
         print(f"    Test Accuracy: {test_accuracy:.4f}")
+        print(f"    Test ROC-AUC: {test_auc:.4f}")
+        print(f"    Best Parameters: {grid.best_params_}")
+        print(f"    Classification Report:\n{class_report}")
         
         # Store all model results
-        all_model_results.append({'Combination': combo, 'Model': model_name, 'CV_Score': cv_score, 'Test_Accuracy': test_accuracy})
+        all_model_results.append({
+            'Combination': combo,
+            'Model': model_name,
+            'CV_Score': cv_score,
+            'Test_Accuracy': test_accuracy,
+            'Test_ROC_AUC': test_auc,
+            'Best_Params': grid.best_params_
+        })
 
 # Print summary of all models for each combination in a table
 all_results_df = pd.DataFrame(all_model_results)
+print("\nSummary of All Model Results:")
 print(all_results_df)
 
 # Optionally save the results to a CSV file

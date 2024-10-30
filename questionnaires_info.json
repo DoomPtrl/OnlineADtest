@@ -1,0 +1,1513 @@
+{
+  "mmse": {
+    "name": "Mini-Mental State Examination (MMSE)",
+    "sections": [
+      {
+        "title": "Orientation",
+        "explanation": "The psychometrician should ask the patient about various aspects of their current environment and situation, such as the date, location, and other basic information, and assess whether the patient provides correct answers.",
+        "questions": [
+          {
+            "id": "MMDATE",
+            "text": "1. Date today",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "MMYEAR",
+            "text": "2. Year",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "MMMONTH",
+            "text": "3. Month",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "MMDAY",
+            "text": "4. Day of the week",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "MMSEASON",
+            "text": "5. Season",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "MMHOSPIT",
+            "text": "6. Hospital",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "MMFLOOR",
+            "text": "7. Floor",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "MMCITY",
+            "text": "8. City",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "MMAREA",
+            "text": "9. Area",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "MMSTATE",
+            "text": "10. State",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Registration",
+        "explanation": "The psychometrician should name three objects, allowing one second to say each one. Afterward, ask the patient to recall these objects and assess whether they recall them correctly.",
+        "questions": [
+          {
+            "id": "WORD1",
+            "text": "11. Word 1 recall",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "WORD2",
+            "text": "12. Word 2 recall",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "WORD3",
+            "text": "13. Word 3 recall",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Attention and Calculation",
+        "explanation": "The psychometrician should ask the patient to spell the word 'WORLD' backwards, and assess if the patient spells it correctly.",
+        "questions": [
+          {
+            "id": "MMD",
+            "text": "14. D",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "MML",
+            "text": "15. L",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "MMR",
+            "text": "16. R",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "MMO",
+            "text": "17. O",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "MMW",
+            "text": "18. W",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Recall",
+        "explanation": "The psychometrician should ask the patient to recall the three words mentioned in the registration section and assess if they recall them correctly.",
+        "questions": [
+          {
+            "id": "WORD1DL",
+            "text": "19. Word 1 delayed recall",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "WORD2DL",
+            "text": "20. Word 2 delayed recall",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "WORD3DL",
+            "text": "21. Word 3 delayed recall",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Language",
+        "questions": [
+          {
+            "type": "explanation",
+            "text": "The psychometrician should point to their own pencil and watch, and ask the patient to name each as 'pencil' and 'watch' respectively."
+          },
+          {
+            "id": "MMWATCH",
+            "text": "22. Identify a watch",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "MMPENCIL",
+            "text": "23. Identify a pencil",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "MMREPEAT",
+            "text": "24. Repeat 'No ifs, ands, or buts'",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "type": "explanation",
+            "text": "The psychometrician should give the patient a three-stage command: 'Take a paper in your hand, fold it in half, and put it on the floor.' Assess whether the patient can follow these steps correctly."
+          },
+          {
+            "id": "MMHAND",
+            "text": "25. Take a paper in your hand",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "MMFOLD",
+            "text": "26. Fold the paper in half",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "MMONFLR",
+            "text": "27. Put the paper on the floor",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "type": "explanation",
+            "text": "The psychometrician should write 'CLOSE YOUR EYES' on a piece of paper and tell the patient to read it aloud and obey the instruction."
+          },
+          {
+            "id": "MMREAD",
+            "text": "28. Read and obey 'Close your eyes'",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "type": "explanation",
+            "text": "The psychometrician should ask the patient to write any one complete sentence."
+          },
+          {
+            "id": "MMWRITE",
+            "text": "29. Write a sentence",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "type": "explanation",
+            "text": "The psychometrician should show the patient a design on the screen and ask them to copy it."
+          },
+          {
+            "id": "MMDRAW",
+            "text": "30. Copy the design shown below",
+            "type": "radio",
+            "image": "design.jpg",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "moca": {
+    "name": "Montreal Cognitive Assessment (MOCA)",
+    "sections": [
+      {
+        "title": "Visuospatial/Executive",
+        "explanation": "The psychometrician should present the patient with tasks to assess visuospatial and executive functions.",
+        "questions": [
+          {
+            "id": "TRAILS",
+            "text": "1. Draw a line to connect alternating letters and numbers (e.g., 1-A, 2-B, etc.)",
+            "type": "radio",
+            "image": "visuospatial.jpeg",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "CUBE",
+            "text": "2. Copy the cube shown below",
+            "type": "radio",
+            "image": "cube.jpeg",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "CLOCKCON",
+            "text": "3. Draw a clock contour",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "CLOCKNO",
+            "text": "4. Place the numbers on the clock",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "CLOCKHAN",
+            "text": "5. Set the clock hands to 10 past 11",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Naming",
+        "explanation": "The psychometrician should show the patient pictures of three animals and ask them to name each one.",
+        "questions": [
+          {
+            "id": "LION",
+            "text": "6. Name the animal shown below (Lion)",
+            "type": "radio",
+            "image": "lion.jpeg",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "RHINO",
+            "text": "7. Name the animal shown below (Rhinoceros)",
+            "type": "radio",
+            "image": "rhino.jpeg",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "CAMEL",
+            "text": "8. Name the animal shown below (Camel)",
+            "type": "radio",
+            "image": "camel.jpeg",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Memory",
+        "explanation": "The psychometrician should ask the patient to recall the following words immediately: 'face, velvet, church, daisy, red'. Assess whether the patient can recall each word correctly.",
+        "questions": [
+          {
+            "id": "IMMT1W1",
+            "text": "9. Immediate recall of 'face'",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "IMMT1W2",
+            "text": "10. Immediate recall of 'velvet'",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "IMMT1W3",
+            "text": "11. Immediate recall of 'church'",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "IMMT1W4",
+            "text": "12. Immediate recall of 'daisy'",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "IMMT1W5",
+            "text": "13. Immediate recall of 'red'",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "type": "explanation",
+            "text": "The psychometrician should ask the patient to recall the following words after delay of five minutes: 'face, velvet, church, daisy, red'. Assess whether the patient can recall each word correctly."
+          },
+          {
+            "id": "IMMT2W1",
+            "text": "14. Late recall of 'face'",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "IMMT2W2",
+            "text": "15. Late recall of 'velvet'",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "IMMT2W3",
+            "text": "16. Late recall of 'church'",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "IMMT2W4",
+            "text": "17. Late recall of 'daisy'",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "IMMT2W5",
+            "text": "18. Late recall of 'red'",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Attention",
+        "explanation": "The psychometrician should assess the patient's attention by having them repeat sequences of numbers.",
+        "questions": [
+          {
+            "id": "DIGFOR",
+            "text": "19. Repeat numbers forward (2 1 8 5 4)",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "DIGBACK",
+            "text": "20. Repeat numbers backward (7 4 2)",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "type": "explanation",
+            "text": "The next task is to assess the patient's attention by reading a list of letters: FBACMNAAJKLBAFAKDEAAAJAMOFAAB. The patient must tap with their hand each time they hear the letter 'A'."
+          },
+          {
+            "id": "LETTERS",
+            "text": "21. Number of errors patient made",
+            "type": "number"
+          },
+          {
+            "type": "explanation",
+            "text": "The psychometrician should assess the patient's attention by asking them to perform a serial subtraction of 7, starting at 100. The patient should continue subtracting until reaching 65."
+          },
+          {
+            "id": "SERIAL1",
+            "text": "22. Subtract 7 from previous (Answer: 93)",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct (93)"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "SERIAL2",
+            "text": "23. Subtract 7 from previous (Answer: 86)",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct (86)"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "SERIAL3",
+            "text": "24. Subtract 7 from previous (Answer: 79)",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct (79)"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "SERIAL4",
+            "text": "25. Subtract 7 from previous (Answer: 72)",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct (72)"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "SERIAL5",
+            "text": "26. Subtract 7 from previous (Answer: 65)",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct (65)"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Language",
+        "explanation": "The psychometrician should ask the patient to repeat the following sentences:",
+        "questions": [
+          {
+            "id": "REPEAT1",
+            "text": "27. Repeat: 'I only know that John is the one to help today.'",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "REPEAT2",
+            "text": "28. Repeat: 'The cat always hid under the couch when dogs were in the room.'",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "FFLUENCY",
+            "text": "29. Name as many words as possible that begin with the letter 'F' in one minute (write number of words)",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "title": "Abstraction",
+        "explanation": "The psychometrician should ask the patient to find the similarity between two words.",
+        "questions": [
+          {
+            "id": "ABSTRAN",
+            "text": "30. Train - Bicycle",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct (e.g., means of transport)"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "ABSMEAS",
+            "text": "31. Watch - Ruler",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct (e.g., measuring instruments)"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Delayed Recall",
+        "explanation": "The psychometrician should ask the patient to recall the words 'face, velvet, church, daisy, red' after a delay. Assess whether the patient can recall each word correctly using cues.",
+        "questions": [
+          {
+            "id": "DELW1",
+            "text": "32. Delayed recall of 'face' (0 = Incorrect, 1 = Correct with Multiple Choice Cue, 2 = Correct with Category Cue, 3 = Correct with no cues)",
+            "type": "radio",
+            "options": [
+              {
+                "value": "0",
+                "label": "Incorrect"
+              },
+              {
+                "value": "1",
+                "label": "Correct with Multiple Choice Cue"
+              },
+              {
+                "value": "2",
+                "label": "Correct with Category Cue"
+              },
+              {
+                "value": "3",
+                "label": "Correct with no cues"
+              }
+            ]
+          },
+          {
+            "id": "DELW2",
+            "text": "33. Delayed recall of 'velvet' (0 = Incorrect, 1 = Correct with Multiple Choice Cue, 2 = Correct with Category Cue, 3 = Correct with no cues)",
+            "type": "radio",
+            "options": [
+              {
+                "value": "0",
+                "label": "Incorrect"
+              },
+              {
+                "value": "1",
+                "label": "Correct with Multiple Choice Cue"
+              },
+              {
+                "value": "2",
+                "label": "Correct with Category Cue"
+              },
+              {
+                "value": "3",
+                "label": "Correct with no cues"
+              }
+            ]
+          },
+          {
+            "id": "DELW3",
+            "text": "34. Delayed recall of 'church' (0 = Incorrect, 1 = Correct with Multiple Choice Cue, 2 = Correct with Category Cue, 3 = Correct with no cues)",
+            "type": "radio",
+            "options": [
+              {
+                "value": "0",
+                "label": "Incorrect"
+              },
+              {
+                "value": "1",
+                "label": "Correct with Multiple Choice Cue"
+              },
+              {
+                "value": "2",
+                "label": "Correct with Category Cue"
+              },
+              {
+                "value": "3",
+                "label": "Correct with no cues"
+              }
+            ]
+          },
+          {
+            "id": "DELW4",
+            "text": "35. Delayed recall of 'daisy' (0 = Incorrect, 1 = Correct with Multiple Choice Cue, 2 = Correct with Category Cue, 3 = Correct with no cues)",
+            "type": "radio",
+            "options": [
+              {
+                "value": "0",
+                "label": "Incorrect"
+              },
+              {
+                "value": "1",
+                "label": "Correct with Multiple Choice Cue"
+              },
+              {
+                "value": "2",
+                "label": "Correct with Category Cue"
+              },
+              {
+                "value": "3",
+                "label": "Correct with no cues"
+              }
+            ]
+          },
+          {
+            "id": "DELW5",
+            "text": "36. Delayed recall of 'red' (0 = Incorrect, 1 = Correct with Multiple Choice Cue, 2 = Correct with Category Cue, 3 = Correct with no cues)",
+            "type": "radio",
+            "options": [
+              {
+                "value": "0",
+                "label": "Incorrect"
+              },
+              {
+                "value": "1",
+                "label": "Correct with Multiple Choice Cue"
+              },
+              {
+                "value": "2",
+                "label": "Correct with Category Cue"
+              },
+              {
+                "value": "3",
+                "label": "Correct with no cues"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Orientation",
+        "explanation": "The psychometrician should ask the patient questions about the current date, month, year, day, place, and city to assess their orientation.",
+        "questions": [
+          {
+            "id": "DATE",
+            "text": "37. What is the current date?",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "MONTH",
+            "text": "38. What is the current month?",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "YEAR",
+            "text": "39. What is the current year?",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "DAY",
+            "text": "40. What day of the week is it?",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "PLACE",
+            "text": "41. Where are we right now (place)?",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          },
+          {
+            "id": "CITY",
+            "text": "42. What city are we in?",
+            "type": "radio",
+            "options": [
+              {
+                "value": "1",
+                "label": "Correct"
+              },
+              {
+                "value": "0",
+                "label": "Incorrect"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "npiq": {
+    "name": "Neuropsychiatric Inventory Questionnaire (NPI-Q)",
+    "sections": [
+      {
+        "title": "Neuropsychiatric Symptoms",
+        "questions": [
+          {
+            "id": "NPIASEV",
+            "text": "1. Delusions: Does the patient have false beliefs, such as thinking that others are stealing from him/her or planning to harm him/her in some way?",
+            "type": "radio",
+            "options": [
+              {
+                "value": "0",
+                "label": "Not Present"
+              },
+              {
+                "value": "1",
+                "label": "Mild"
+              },
+              {
+                "value": "2",
+                "label": "Moderate"
+              },
+              {
+                "value": "3",
+                "label": "Severe"
+              }
+            ]
+          },
+          {
+            "id": "NPIBSEV",
+            "text": "2. Hallucinations: Does the patient have hallucinations such as false visions or voices? Does he or she seem to hear or see things that are not present?",
+            "type": "radio",
+            "options": [
+              {
+                "value": "0",
+                "label": "Not Present"
+              },
+              {
+                "value": "1",
+                "label": "Mild"
+              },
+              {
+                "value": "2",
+                "label": "Moderate"
+              },
+              {
+                "value": "3",
+                "label": "Severe"
+              }
+            ]
+          },
+          {
+            "id": "NPICSEV",
+            "text": "3. Agitation/Aggression: Is the patient resistive to help from others at times, or hard to handle?",
+            "type": "radio",
+            "options": [
+              {
+                "value": "0",
+                "label": "Not Present"
+              },
+              {
+                "value": "1",
+                "label": "Mild"
+              },
+              {
+                "value": "2",
+                "label": "Moderate"
+              },
+              {
+                "value": "3",
+                "label": "Severe"
+              }
+            ]
+          },
+          {
+            "id": "NPIDSEV",
+            "text": "4. Depression/Dysphoria: Does the patient seem sad or say that he/she is depressed?",
+            "type": "radio",
+            "options": [
+              {
+                "value": "0",
+                "label": "Not Present"
+              },
+              {
+                "value": "1",
+                "label": "Mild"
+              },
+              {
+                "value": "2",
+                "label": "Moderate"
+              },
+              {
+                "value": "3",
+                "label": "Severe"
+              }
+            ]
+          },
+          {
+            "id": "NPIESEV",
+            "text": "5. Anxiety: Does the patient become upset when separated from you? Does he/she have any other signs of nervousness such as shortness of breath, sighing, being unable to relax, or feeling excessively tense?",
+            "type": "radio",
+            "options": [
+              {
+                "value": "0",
+                "label": "Not Present"
+              },
+              {
+                "value": "1",
+                "label": "Mild"
+              },
+              {
+                "value": "2",
+                "label": "Moderate"
+              },
+              {
+                "value": "3",
+                "label": "Severe"
+              }
+            ]
+          },
+          {
+            "id": "NPIFSEV",
+            "text": "6. Euphoria: Does the patient appear to feel too good or act excessively happy?",
+            "type": "radio",
+            "options": [
+              {
+                "value": "0",
+                "label": "Not Present"
+              },
+              {
+                "value": "1",
+                "label": "Mild"
+              },
+              {
+                "value": "2",
+                "label": "Moderate"
+              },
+              {
+                "value": "3",
+                "label": "Severe"
+              }
+            ]
+          },
+          {
+            "id": "NPIGSEV",
+            "text": "7. Apathy/Indifference: Does the patient seem less interested in his/her usual activities or in the activities and plans of others?",
+            "type": "radio",
+            "options": [
+              {
+                "value": "0",
+                "label": "Not Present"
+              },
+              {
+                "value": "1",
+                "label": "Mild"
+              },
+              {
+                "value": "2",
+                "label": "Moderate"
+              },
+              {
+                "value": "3",
+                "label": "Severe"
+              }
+            ]
+          },
+          {
+            "id": "NPIHSEV",
+            "text": "8. Disinhibition: Does the patient seem to act impulsively, for example, talking to strangers as if he/she knows them, or saying things that may hurt people's feelings?",
+            "type": "radio",
+            "options": [
+              {
+                "value": "0",
+                "label": "Not Present"
+              },
+              {
+                "value": "1",
+                "label": "Mild"
+              },
+              {
+                "value": "2",
+                "label": "Moderate"
+              },
+              {
+                "value": "3",
+                "label": "Severe"
+              }
+            ]
+          },
+          {
+            "id": "NPIISEV",
+            "text": "9. Irritability/Lability: Is the patient impatient and cranky? Does he/she have difficulty coping with delays or waiting for planned activities?",
+            "type": "radio",
+            "options": [
+              {
+                "value": "0",
+                "label": "Not Present"
+              },
+              {
+                "value": "1",
+                "label": "Mild"
+              },
+              {
+                "value": "2",
+                "label": "Moderate"
+              },
+              {
+                "value": "3",
+                "label": "Severe"
+              }
+            ]
+          },
+          {
+            "id": "NPIJSEV",
+            "text": "10. Motor Disturbances: Does the patient engage in repetitive activities such as pacing around the house, handling buttons, wrapping string, or doing other things repeatedly?",
+            "type": "radio",
+            "options": [
+              {
+                "value": "0",
+                "label": "Not Present"
+              },
+              {
+                "value": "1",
+                "label": "Mild"
+              },
+              {
+                "value": "2",
+                "label": "Moderate"
+              },
+              {
+                "value": "3",
+                "label": "Severe"
+              }
+            ]
+          },
+          {
+            "id": "NPIKSEV",
+            "text": "11. Night-time Behaviors: Does the patient awaken you during the night, rise too early in the morning, or take excessive naps during the day?",
+            "type": "radio",
+            "options": [
+              {
+                "value": "0",
+                "label": "Not Present"
+              },
+              {
+                "value": "1",
+                "label": "Mild"
+              },
+              {
+                "value": "2",
+                "label": "Moderate"
+              },
+              {
+                "value": "3",
+                "label": "Severe"
+              }
+            ]
+          },
+          {
+            "id": "NPILSEV",
+            "text": "12. Appetite/Eating: Has the patient lost or gained weight, or had a change in the type of food he/she likes?",
+            "type": "radio",
+            "options": [
+              {
+                "value": "0",
+                "label": "Not Present"
+              },
+              {
+                "value": "1",
+                "label": "Mild"
+              },
+              {
+                "value": "2",
+                "label": "Moderate"
+              },
+              {
+                "value": "3",
+                "label": "Severe"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
