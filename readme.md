@@ -33,7 +33,17 @@ https://1drv.ms/t/s!Ao2cfP9fepJck6l_VS48DmnCvps3rg?e=M0kpos
 - The webapp is developed using Flask.
 - Html files are in /templates.
 - patient data is stored in paitent_info.csv.
-=========
+# Results
+
+| Model Type   | MMSE Alone | MoCA Alone | NPIQ Alone | MMSE & MoCA | MMSE & NPIQ | MoCA & NPIQ | MMSE, MoCA & NPIQ |
+|--------------|------------|------------|------------|-------------|-------------|-------------|--------------------|
+| RF           | 67%        | 74%        | 59%        | 77%         | 72%         | 77%         | 79%                |
+| SVM          | 66%        | 67%        | 57%        | 70%         | 71%         | 71%         | 74%                |
+| Gradient     | 65%        | 68%        | 58%        | 69%         | 71%         | 71%         | 73%                |
+| **Boosting** |            |            |            |             |             |             |                    |
+| AdaBoost     | 66%        | 65%        | 56%        | 65%         | 69%         | 66%         | 65%                |
+| ExtraTree    | 67%        | 72%        | 58%        | 75%         | 70%         | 75%         | 77%                |
+
 # Future Work
 - [ ] Implementing QDA model
 - [ ] Implementing more questionnaire data
