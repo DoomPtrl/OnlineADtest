@@ -26,13 +26,17 @@
                         {% for option in question.options %}
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="{{ question.id }}" value="{{ option.value }}"
-                                {% if previous_answers.get(question.id) == option.value %}checked{% endif %} required>
+                                {% if previous_answers.get(question.id) == option.value %}
+                                    checked
+                                {% elif not previous_answers.get(question.id) and loop.first %}
+                                    checked
+                                {% endif %} required>
                             <label class="form-check-label">{{ option.label }}</label>
                         </div>
                         {% endfor %}
                     {% elif question.type == 'number' %}
                         <input type="number" class="form-control" name="{{ question.id }}"
-                            value="{{ previous_answers.get(question.id, '') }}" required>
+                            value="{{ previous_answers.get(question.id, '0') }}" required>
                     {% elif question.type == 'text' %}
                         <input type="text" class="form-control" name="{{ question.id }}"
                             value="{{ previous_answers.get(question.id, '') }}" required>
